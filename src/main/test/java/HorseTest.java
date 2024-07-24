@@ -82,4 +82,18 @@ public class HorseTest {
         }
     }
 
+    @ParameterizedTest
+    @ValueSource (doubles = {0.1, 0.2, 0.5, 0.9, 1.0, 999.999, 0.0})
+    void move(double random){
+        try(var mokedStatic = mockStatic(Horse.class)){
+            Horse horse = new Horse("qwerty", 31, 283);
+            mokedStatic.when(() -> Horse.getRandomDouble(0.2, 0.9)).thenReturn(random);
+
+            horse.move();
+
+            assertEquals(283+31*random, horse.getDistance());
+
+        }
+    }
+
 }

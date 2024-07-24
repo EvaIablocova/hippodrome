@@ -1,3 +1,5 @@
+
+
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -28,24 +30,25 @@ public class HippodromeTest {
         assertEquals (horses, hippodrome.getHorses());
     }
 
-//    @Test
-//    public void move(){
-//        //AAA
-//        //arrange
-//        List<Horse> horses = new ArrayList<>();
-//
-//        for (int i = 1; i < 50; i++) {
-//            horses.add(mock(Horse.class));
-//        }
-//
-//        //act
-//        new Hippodrome(horses).move();
-//
-//        //assert
-//        for(Horse horse:horses){
-//            verify(horse).move();
-//        }
-//    }
+    @Test
+    public void move(){
+        //AAA
+       //arrange
+        List<Horse> horses = new ArrayList<>();
+
+        for (int i = 1; i < 50; i++) {
+            horses.add(mock(Horse.class));
+        }
+        Hippodrome hippodrome = new Hippodrome(horses);
+
+        //act
+        hippodrome.move();
+
+        //assert
+       for(Horse horse:horses){
+           verify(horse).move();
+        }
+    }
 
     @Test
     public void getWinner(){
